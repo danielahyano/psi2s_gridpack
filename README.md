@@ -157,3 +157,5 @@ In your Python configuration fragment:
 * Point the gridpack path to your .tar.gz file.
 * Set numberOfParameters = cms.uint32(2) (for NEVENTS and SEED).
 * The fragment will automatically call: ./runcmsgrid.sh [nevents] [seed]
+
+The fdgen file is created from https://github.com/danielahyano/decayPsi2S
