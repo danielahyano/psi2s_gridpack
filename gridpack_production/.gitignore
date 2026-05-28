@@ -1,0 +1,21 @@
+# Gridpack tarballs
+productions/
+
+# STARlight output
+*.out
+*.lhe
+*.log
+
+# ROOT ACLiC compiled files
+gridpack_production/*.d
+gridpack_production/*.so
+gridpack_production/*.pcm
+
+# Generated decay card (copied by build script)
+gridpack_production/decay.dec
+
+# Runtime files
+gridpack_production/slight.in.bak
+gridpack_production/cmsgrid_final.lhe
+gridpack_production/slight_decayed.*
+EOF

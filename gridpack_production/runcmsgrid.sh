@@ -72,19 +72,18 @@ fi
 # 5. Run fdgen with the baked-in decay card
 echo "Decaying with EvtGen (Decay card: $DECAY_CARD)..."
 (
-  export LD_LIBRARY_PATH=$(pwd)/lib:/lib64:/usr/lib64
+  export LD_LIBRARY_PATH=$(pwd)/lib:$EVTGEN/lib:$HEPMC/lib64:$PYTHIA8/lib:$(root-config --libdir):$LD_LIBRARY_PATH
   ./fdgen slight.out slight_decayed "$DECAY_CARD"
 )
 if [ $? -ne 0 ]; then
   echo "Error: fdgen failed."
   exit 1
 fi
-
 # 6. Convert to LHE
 echo "Converting to LHE format..."
 cmsEnergyDiv2=$(echo "$COLL_E / 2" | bc)
 
-root -l -b -q "convert_SL2LHE.C+(\"slight_decayed.tx\", \"cmsgrid_final\", $cmsEnergyDiv2, $cmsEnergyDiv2)"
+root -l -b -q "convert_SL2LHE.C(\"slight_decayed.tx\", \"cmsgrid_final\", $cmsEnergyDiv2, $cmsEnergyDiv2)"
 if [ $? -ne 0 ]; then
   echo "Error: ROOT conversion failed."
   exit 1
@@ -96,7 +95,7 @@ rm -f slight.out
 rm -f slight_decayed.out
 rm -f slight_decayed.tx
 rm -f slight_decayed.root
-
+rm -f slight.txt
 # 8. Final Validation
 if [ -f cmsgrid_final.lhe ]; then
   echo ""
