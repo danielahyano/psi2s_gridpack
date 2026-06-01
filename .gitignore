@@ -1,6 +1,6 @@
 cat > /afs/cern.ch/user/d/dyano/private/mcPsi2s/psi2s_gridpack_work/.gitignore << 'EOF'
 # Gridpack tarballs
-productions/
+#productions/
 
 # STARlight output
 *.out

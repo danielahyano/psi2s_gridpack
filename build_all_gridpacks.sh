@@ -27,7 +27,12 @@ set -e
 # Format: "slight_config:decay_card:output_name"
 ###############################################################################
 JOBS=(
-  "slight.in:DECAYMU.DEC:psi2s_coh_mumu_v1"
+  "slight.in:DECAYMU.DEC:psi2s_coh_mumu_dipion0_dipioncharged_v1"
+  "slight.in:DECAYEL.DEC:psi2s_coh_elel_dipion0_dipioncharged_v1"
+  "slight.in:DECAYelDIPIONCHARGED.DEC:psi2s_coh_elel_dipioncharged_v1"
+  "slight.in:DECAYmuDIPIONCHARGED.DEC:psi2s_coh_mumu_dipioncharged_v1"
+  "slightInc.in:DECAYelDIPIONCHARGED.DEC:psi2s_inc_elel_dipioncharged_v1"
+  "slightInc.in:DECAYmuDIPIONCHARGED.DEC:psi2s_inc_mumu_dipioncharged_v1"
 )
 ###############################################################################
 
