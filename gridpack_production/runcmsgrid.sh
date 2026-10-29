@@ -72,8 +72,8 @@ fi
 # 5. Run fdgen with the baked-in decay card
 echo "Decaying with EvtGen (Decay card: $DECAY_CARD)..."
 (
-  export LD_LIBRARY_PATH=$(pwd)/lib:$EVTGEN/lib:$HEPMC/lib64:$PYTHIA8/lib:$(root-config --libdir):$LD_LIBRARY_PATH
-  ./fdgen slight.out slight_decayed "$DECAY_CARD"
+   export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
+   ./fdgen slight.out slight_decayed "$DECAY_CARD" "$SEED" 0
 )
 if [ $? -ne 0 ]; then
   echo "Error: fdgen failed."

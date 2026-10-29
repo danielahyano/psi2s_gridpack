@@ -49,7 +49,8 @@ for search_path in \
 do
     if [ -f "$search_path/libtbb.so.2" ]; then
         echo "  Found libtbb.so.2 in $search_path"
-        cp -L "$search_path/libtbb.so.2" ./lib/
+        cp -L $(g++ -print-file-name=libstdc++.so.6) $(g++ -print-file-name=libgcc_s.so.1) ./lib/
+	#cp -L "$search_path/libtbb.so.2" ./lib/
         TBB_FOUND=1
         break
     fi
