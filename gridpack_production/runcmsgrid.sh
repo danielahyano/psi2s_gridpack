@@ -72,7 +72,10 @@ fi
 # 5. Run fdgen with the baked-in decay card
 echo "Decaying with EvtGen (Decay card: $DECAY_CARD)..."
 (
-   export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
+   # use the ROOT/EvtGen that fdgen was built with, not the job's CMSSW
+   unset ROOTSYS ROOT_INCLUDE_PATH
+   FDGEN_LIBS=$(cat fdgen_libpath.txt 2>/dev/null)
+   export LD_LIBRARY_PATH=$(pwd)/lib:$FDGEN_LIBS:$LD_LIBRARY_PATH
    ./fdgen slight.out slight_decayed "$DECAY_CARD" "$SEED" 0
 )
 if [ $? -ne 0 ]; then
